@@ -39,7 +39,6 @@ private final CartService cartService;
         // 카카오 결제 준비하기	- 결제요청 service 실행
         model.addAttribute("itemSearchDto",itemSearchDto);
         httpSession.setAttribute("itemSearchDto",itemSearchDto);
-        System.out.println("itemSearchDto getSearchAdultCount: " + itemSearchDto.getSearchAdultCount());
         httpSession.setAttribute("itemId",itemId);
         ReadyResponse readyResponse = kakaoPayService.payReady(itemId,itemSearchDto);
         return readyResponse; // 클라이언트에 보냄.(tid,next_redirect_pc_url이 담겨있음.)

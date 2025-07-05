@@ -64,8 +64,7 @@ public class CartController {
     }
 
     @GetMapping(value = "/cart")
-    public String orderHist(Principal principal, Model model, ItemSearchDto itemSearchDto,HttpSession httpSession,
-                            LocalDate searchCheckOut){
+    public String orderHist(Principal principal, Model model, ItemSearchDto itemSearchDto,HttpSession httpSession){
         Member member = memberService.findMember(httpSession,principal);
         List<CartItem> cartItemList = cartItemService.findByMemberId(member.getId());
         List<CartDetailDto> cartDetailDtoList = cartService.getCartList(principal,httpSession);
@@ -82,8 +81,7 @@ public class CartController {
 
     }
     @PatchMapping(value = "/cartItem/{itemId}")
-    public @ResponseBody ResponseEntity updateCartItem(@PathVariable("itemId") Long itemId,
-                                                       ItemSearchDto itemSearchDto, Principal principal, CartItem cartItem,int count) {
+    public @ResponseBody ResponseEntity updateCartItem(@PathVariable("itemId") Long itemId,Principal principal,int count) {
         System.out.println(itemId);
         if (count<= 0) {
             return new ResponseEntity<String>("최소 1개이상 담아주세요.", HttpStatus.BAD_REQUEST);

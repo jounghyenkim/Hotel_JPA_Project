@@ -34,4 +34,4 @@ build/
 src/main/resources/application-oauth.properties
 
 src/main/resources/application-oauth.properties
-/.env
+/src/main/resources/.env
